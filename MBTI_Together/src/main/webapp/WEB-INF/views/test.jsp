@@ -3,9 +3,6 @@
 <!-- jstl core, function -->
 <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,14 +23,34 @@
 		
 		//화면 로딩시 실행 함수 
 		//method();
+		test();
 		
 	});//ready
-
+	function test(){
+		$.ajax(
+			{
+				type: "get",
+				url:"async-error",
+				data: {
+					"prompt": prompt,
+				},
+				dataType: "text",
+				success: function(data, status, xhr){
+					console.log(data);
+				},
+				error: function(xhr, status, e){
+					// console.log("실패: " + xhr.status);
+					var emsg = JSON.parse(xhr.responseText).message;
+					console.log(emsg);
+				}
+			}//ajax	
+		);//ajax
+	}
 	
 </script>
 </head>
 <body>
-	hi
+	<h1>test.jsp</h1>
 <!-- bootstrap js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

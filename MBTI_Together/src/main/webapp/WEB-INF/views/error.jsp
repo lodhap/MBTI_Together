@@ -1,10 +1,9 @@
+<!-- exception객체 사용 위한 설정 isErrorPage="true"-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isErrorPage="true"%>
 <!-- jstl core, function -->
 <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -27,13 +26,15 @@
 		//화면 로딩시 실행 함수 
 		//method();
 		
+		
 	});//ready
-
-	
 </script>
 </head>
 <body>
-	hi
+	<h1>Error</h1>
+	<%
+		out.print(exception.getLocalizedMessage());
+	%>
 <!-- bootstrap js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
